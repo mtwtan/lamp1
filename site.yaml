@@ -1,0 +1,8 @@
+---
+- name: "Run LAMP install"
+  hosts: web
+  become: true
+  become_user: root
+  roles:
+    - common
+
