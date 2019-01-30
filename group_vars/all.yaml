@@ -1,0 +1,10 @@
+---
+# Repositories
+packages:
+  lamp:
+    - httpd
+    - php 
+    - php-mysql
+
+repo:
+  epel: "https://mirror.vcu.edu/pub/gnu_linux/epel/7/x86_64/"

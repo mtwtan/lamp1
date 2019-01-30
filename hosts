@@ -1,0 +1,12 @@
+[web-ohio-east-2a]
+10.0.1.204
+10.0.1.210
+
+[web-ohio-east-2b]
+10.0.3.230
+10.0.3.188
+
+[web:children]
+web-ohio-east-2a
+web-ohio-east-2b
+
