@@ -11,8 +11,13 @@
     name: '*'
     state: latest
 
--  name: Install LAMP packages
-   yum:
+- name: Install LAMP packages
+  yum:
     name: "{{ packages.lamp }}"
     state: present
+
+- name: Start HTTPD
+  systemd:
+    name: httpd
+    state: started
 
