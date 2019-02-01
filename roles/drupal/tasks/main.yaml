@@ -1,0 +1,26 @@
+---
+- name: Download Drupal tar file
+  get_url:
+    url: "{{ drupal.package }}"
+    dest: "{{ download_location }}"
+    mode: 0644
+
+- name: UNtar Drupal tar file
+  unarchive:
+    src: "{{ drupal.package_url }}/{{ drupal.package_tar }}"
+    dest: "{{ download_location }}/drupal"
+
+- name: Move extracted folder to web directory
+  command: "mv {{ download_location }}/drupal /var/www/html/drupal"
+
+- name: Copy settings file to default folder
+  copy:
+    src: settings.php
+    dest: /var/www/html/drupal/sites/default/settings.php
+    mode: 0644
+  
+- name: Copy default.settings.php settings.php 
+  shell: |
+    chown -R apache:apache /var/www/html/drupal/
+    chcon -R -t httpd_sys_content_rw_t /var/www/html/drupal/sites/
+

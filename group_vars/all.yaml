@@ -1,10 +1,24 @@
 ---
 # Repositories
+drupal:
+  download_location: "/tmp"
+  location: "/var/www/html/drupal"
+  package_url: "https://ftp-origin.drupal.org/files/projects"
+  package_tar: "drupal-8.6.7.tar.gz"
+
 packages:
   lamp:
     - httpd
     - php 
     - php-mysql
+    - php-mbstring
+    - php-gd
+    - php-xml
+    - php-pear
+    - php-fpm
+    - php-pdo
+    - php-opcache
 
 repo:
   epel: "https://mirror.vcu.edu/pub/gnu_linux/epel/7/x86_64/"
+  webtatic: "https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"
