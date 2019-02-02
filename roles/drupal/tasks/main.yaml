@@ -1,13 +1,13 @@
 ---
 - name: Download Drupal tar file
   get_url:
-    url: "{{ drupal.package }}"
+    url: "{{ drupal.package_url }}/{{ drupal.package_tar }}"
     dest: "{{ download_location }}"
     mode: 0644
 
 - name: UNtar Drupal tar file
   unarchive:
-    src: "{{ drupal.package_url }}/{{ drupal.package_tar }}"
+    src: "{{ download_location }}/{{ drupal.package_tar }}"
     dest: "{{ download_location }}/drupal"
 
 - name: Move extracted folder to web directory
