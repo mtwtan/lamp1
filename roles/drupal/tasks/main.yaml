@@ -2,16 +2,16 @@
 - name: Download Drupal tar file
   get_url:
     url: "{{ drupal.package_url }}/{{ drupal.package_tar }}"
-    dest: "{{ download_location }}"
+    dest: "{{ drupal.download_location }}"
     mode: 0644
 
 - name: UNtar Drupal tar file
   unarchive:
-    src: "{{ download_location }}/{{ drupal.package_tar }}"
-    dest: "{{ download_location }}/drupal"
+    src: "{{ drupal.download_location }}/{{ drupal.package_tar }}"
+    dest: "{{ drupal.download_location }}/drupal"
 
 - name: Move extracted folder to web directory
-  command: "mv {{ download_location }}/drupal /var/www/html/drupal"
+  command: "mv {{ drupal.download_location }}/drupal /var/www/html/drupal"
 
 - name: Copy settings file to default folder
   copy:
