@@ -3,6 +3,7 @@
 drupal:
   download_location: "/tmp"
   location: "/var/www/html/drupal"
+  package_folder: drupal-8.6.7
   package_url: "https://ftp-origin.drupal.org/files/projects"
   package_tar: "drupal-8.6.7.tar.gz"
 
@@ -10,7 +11,7 @@ packages:
   common:
     - firewalld
     - python-firewall
-    
+
   lamp:
     - httpd
     - php 
