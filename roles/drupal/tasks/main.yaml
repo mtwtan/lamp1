@@ -14,13 +14,19 @@
 - name: Move extracted folder to web directory
   command: "mv {{ drupal.download_location }}/{{ drupal.package_folder }} /var/www/html/drupal"
 
-- name: Copy settings file to default folder
+- name: Copy httpd.conf file 
   copy:
-    src: settings.php
-    dest: /var/www/html/drupal/sites/default/settings.php
+    src: httpd.conf
+    dest: /etc/httpd/conf/httpd.conf
     mode: 0644
+ 
+- name: Copy settings file to default folder
+  template:
+    src: settings.php.j2
+    dest: /var/www/html/drupal/sites/default/settings.php
+    mode: 0444
   
-- name: Copy default.settings.php settings.php 
+- name: Set ownership and SELinux settings 
   shell: |
     chown -R apache:apache /var/www/html/drupal/
     chcon -R -t httpd_sys_content_rw_t /var/www/html/drupal/sites/

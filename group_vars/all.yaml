@@ -11,18 +11,16 @@ packages:
   common:
     - firewalld
     - python-firewall
-
   lamp:
-    - httpd
-    - php 
-    - php-mysql
-    - php-mbstring
-    - php-gd
-    - php-xml
-    - php-pear
-    - php-fpm
-    - php-pdo
-    - php-opcache
+    - httpd24
+    - php72 
+    - php72-cli
+    - php72-mysqlnd
+    - php72-mbstring
+    - php72-gd
+    - php72-pdo
+    - php72-xml
+    - php72-opcache
 
 repo:
   epel: "https://mirror.vcu.edu/pub/gnu_linux/epel/7/x86_64/"

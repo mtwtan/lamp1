@@ -1,13 +1,18 @@
-- name: "Add EPEL repo"
-  yum_repository:
-    name: epel 
-    description: "EPEL Repo"
-    baseurl: "{{ repo.epel }}"
-    gpgcheck: no
-    enabled: yes
+#- name: "Add EPEL repo"
+#  yum_repository:
+#    name: epel 
+#    description: "EPEL Repo"
+#    baseurl: "{{ repo.epel }}"
+#    gpgcheck: no
+#    enabled: yes
 
-- name: "Add RHEL Optional Repo"
-  command: "yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional"
+#- name: "Add RHEL Optional Repo"
+#  command: "yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional"
+
+#- name: "Add RHSCL repository for PHP 5.6"
+#  shell: |
+#    yum update rh-amazon-rhui-client.noarch
+#    yum-config-manager --enable rhui-REGION-rhel-server-rhscl
 
 - name: "Update YUM packages"
   yum:
@@ -23,21 +28,32 @@
   yum:
     name: "{{ packages.lamp }}"
     state: present
+   
+#- name: Start PHP FPM service
+#  systemd:
+#    name: rh-php56-php-fpm
+#    state: started
+#    enabled: true
 
 - name: Start HTTPD
-  systemd:
+  service:
     name: httpd
     state: started
 
-- name: Start firewalld
-  systemd:
-    name: firewalld
-    state: started
+- name: Enable HTTPD
+  service:
+    name: httpd
     enabled: true
 
-- name: Enable Firewall for httpd
-  firewalld:
-    service: http
-    permanent: yes
-    state: enabled
+#- name: Start firewalld
+#  systemd:
+#    name: firewalld
+#    state: started
+#    enabled: true
+
+#- name: Enable Firewall for httpd
+#  firewalld:
+#    service: http
+#    permanent: yes
+#    state: enabled
 
