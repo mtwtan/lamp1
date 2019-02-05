@@ -33,3 +33,8 @@
     chcon -R -t httpd_sys_content_rw_t /var/www/html/drupal/sites/
     restorecon -Rv /var/www/html/drupal/sites
 
+- name: Restart httpd
+  service:
+    name: httpd
+    state: restarted
+    
