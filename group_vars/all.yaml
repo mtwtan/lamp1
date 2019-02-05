@@ -10,7 +10,8 @@ drupal:
 packages:
   common:
     - policycoreutils-python
-    
+    - telnet
+
   lamp:
     - httpd24
     - php72 
