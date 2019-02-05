@@ -777,22 +777,22 @@ $settings['reverse_proxy'] = TRUE;
 $settings['reverse_proxy_addresses'] = array($_SERVER['REMOTE_ADDR']);
 
 $databases['default']['default'] = array (
-  'database' => '{{ web.drupal.database }}',
-  'username' => '{{ web.drupal.username }}',
-  'password' => '{{ web.drupal.password }}',
+  'database' => '{{ web.drupal_db.database }}',
+  'username' => '{{ web.drupal_db.username }}',
+  'password' => '{{ web.drupal_db.password }}',
   'prefix' => '',
-  'host' => '{{ web.drupal.host_master }}',
-  'port' => '{{ web.drupal.port }}',
+  'host' => '{{ web.drupal_db.host_master }}',
+  'port' => '{{ web.drupal_db.port }}',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
 $databases['default']['replica'] = array (
-  'database' => '{{ web.drupal.database }}',
-  'username' => '{{ web.drupal.username }}',
-  'password' => '{{ web.drupal.password }}',
+  'database' => '{{ web.drupal_db.database }}',
+  'username' => '{{ web.drupal_db.username }}',
+  'password' => '{{ web.drupal_db.password }}',
   'prefix' => '',
-  'host' => '{{ web.drupal.host_replica }}',
-  'port' => '{{ web.drupal.port }}',
+  'host' => '{{ web.drupal_db.host_replica }}',
+  'port' => '{{ web.drupal_db.port }}',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
