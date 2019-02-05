@@ -1,18 +1,18 @@
 ---
-- name: Download Drupal tar file
-  get_url:
-    url: "{{ drupal.package_url }}/{{ drupal.package_tar }}"
-    dest: "{{ drupal.download_location }}"
-    mode: 0644
+#- name: Download Drupal tar file
+#  get_url:
+#    url: "{{ drupal.package_url }}/{{ drupal.package_tar }}"
+#    dest: "{{ drupal.download_location }}"
+#    mode: 0644
 
-- name: UNtar Drupal tar file
-  unarchive:
-    src: "{{ drupal.download_location }}/{{ drupal.package_tar }}"
-    dest: "{{ drupal.download_location }}"
-    remote_src: yes
+#- name: UNtar Drupal tar file
+#  unarchive:
+#    src: "{{ drupal.download_location }}/{{ drupal.package_tar }}"
+#    dest: "{{ drupal.download_location }}"
+#    remote_src: yes
 
-- name: Move extracted folder to web directory
-  command: "mv {{ drupal.download_location }}/{{ drupal.package_folder }} /var/www/html/drupal"
+#- name: Move extracted folder to web directory
+#  command: "mv {{ drupal.download_location }}/{{ drupal.package_folder }} /var/www/html/drupal"
 
 - name: Copy httpd.conf file 
   copy:
@@ -29,5 +29,7 @@
 - name: Set ownership and SELinux settings 
   shell: |
     chown -R apache:apache /var/www/html/drupal/
+    semanage fcontext -a -t httpd_sys_content_t "/var/www/html/drupal/sites(/.*)?"
     chcon -R -t httpd_sys_content_rw_t /var/www/html/drupal/sites/
+    restorecon -Rv /var/www/html/drupal/sites
 
