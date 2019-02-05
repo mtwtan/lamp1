@@ -8,6 +8,9 @@ drupal:
   package_tar: "drupal-8.6.7.tar.gz"
 
 packages:
+  common:
+    - policycoreutils-python
+    
   lamp:
     - httpd24
     - php72 

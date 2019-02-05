@@ -19,6 +19,11 @@
     name: '*'
     state: latest
 
+- name: Install Common packages
+  yum:
+    name: "{{ packages.common }}"
+    state: present
+
 - name: Install LAMP packages
   yum:
     name: "{{ packages.lamp }}"
