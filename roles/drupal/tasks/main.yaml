@@ -25,7 +25,11 @@
     src: settings.php.j2
     dest: /var/www/html/drupal/sites/default/settings.php
     mode: 0444
-  
+
+- name: Create sync directory
+  shell: |
+    mkdir -p /var/www/html/drupal/sites/default/files/myawslearntech/sync
+
 - name: Set ownership and SELinux settings 
   shell: |
     chown -R apache:apache /var/www/html/drupal/
@@ -37,4 +41,4 @@
   service:
     name: httpd
     state: restarted
-    
+
